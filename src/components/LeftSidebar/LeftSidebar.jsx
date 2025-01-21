@@ -23,13 +23,17 @@ function LeftSidebar() {
         </div>
       </div>
       <div className="ls-list">
-        <div className="friends ">
-          <img src={profile_img} alt="" />
-          <div>
-            <p>GreatStack</p>
-            <span></span>
-          </div>
-        </div>
+        {Array(12)
+          .fill("")
+          .map((item, index) => (
+            <div key={index} className="friends ">
+              <img src={profile_img} alt="" />
+              <div>
+                <p>GreatStack</p>
+                <span></span>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );
