@@ -6,6 +6,8 @@ import three_dot from "./three-dot.png";
 import img_attachment from "./img_attachment.png";
 import help from "./help.png";
 import arrow from "./arrow.png";
+import avator_icon from "./avator_icon.png";
+import profile_icon from "./profile_icon.jpg";
 
 export {
   logoBig,
@@ -16,4 +18,6 @@ export {
   img_attachment,
   help,
   arrow,
+  avator_icon,
+  profile_icon,
 };

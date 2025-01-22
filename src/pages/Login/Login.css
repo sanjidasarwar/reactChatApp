@@ -1,6 +1,6 @@
 .login{
     min-height: 100dvh;
-    background: url('/public/chat_bg.jpg') no-repeat;
+    background: url('chat_bg.jpg') no-repeat;
     background-size: cover;
     display: flex;
     align-items: center;
