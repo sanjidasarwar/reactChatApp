@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { logoBig } from "../../assets";
-import { signup } from "../../config/firebase";
+import { login, signup } from "../../config/firebase";
 
 function Login() {
   const [currentState, setCurrentState] = useState("Sign Up");
@@ -11,7 +11,11 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(username, email, password);
+    if (currentState === "Sign Up") {
+      signup(username, email, password);
+    } else {
+      login(email, password);
+    }
   };
 
   return (
@@ -49,8 +53,8 @@ function Login() {
             setPassword(e.target.value);
           }}
         />
-        <button onClick={() => setCurrentState("Sign Up")} type="submit">
-          Create account
+        <button type="submit">
+          {currentState === "Sign Up" ? "Create account" : "Login"}
         </button>
         <div className="login-term">
           <input type="checkbox" />
@@ -72,10 +76,7 @@ function Login() {
               </p>
               <p className="login-toggle">
                 Forgot Password ?
-                <span onClick={() => setCurrentState("Login")}>
-                  {" "}
-                  Click here
-                </span>
+                <span onClick={() => setCurrentState("Login")}>Click here</span>
               </p>
             </>
           )}
