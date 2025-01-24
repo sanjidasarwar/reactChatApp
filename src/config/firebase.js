@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { getFirestore, setDoc, doc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -18,6 +19,8 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
+const db = getFirestore(app);
+
 const signup = async (username, email, password) => {
   try {
     const userCredential = await createUserWithEmailAndPassword(
@@ -26,7 +29,18 @@ const signup = async (username, email, password) => {
       password
     );
     const user = userCredential.user;
-    console.log(user);
+    await setDoc(doc(db, "Users", user.uid), {
+      id: user.uid,
+      username: username.toLowerCase(),
+      email,
+      name: "",
+      avator: "",
+      bio: "Hey there, I am using chat app ",
+      lastSeen: Date.now(),
+    });
+    await setDoc(doc(db, "Chats", user.uid), {
+      chatData: [],
+    });
   } catch (error) {
     console.log(error);
   }
