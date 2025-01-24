@@ -4,10 +4,12 @@ import Login from "./pages/Login/Login";
 import Chat from "./pages/Chat/Chat";
 import ProfileUpdate from "./pages/ProfileUpdate/ProfileUpdate";
 import NotFound from "./pages/NotFound/NotFound";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <>
+      <ToastContainer />
       <Routes>
         <Route index element={<Login />} />
         <Route path="/chat" element={<Chat />} />

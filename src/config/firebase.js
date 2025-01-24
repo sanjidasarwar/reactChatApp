@@ -7,6 +7,8 @@ import {
 } from "firebase/auth";
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 
+import { toast } from "react-toastify";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAG2uUCsqhySJVAOARaZ86qhaDXlwHqrHo",
@@ -47,6 +49,7 @@ const signup = async (username, email, password) => {
     });
   } catch (error) {
     console.log(error);
+    toast.error(error.code);
   }
 };
 
@@ -55,6 +58,7 @@ const login = async (email, password) => {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
     console.log(error);
+    toast.error(error.code);
   }
 };
 
