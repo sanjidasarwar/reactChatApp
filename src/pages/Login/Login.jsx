@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { logoBig } from "../../assets";
+import { signup } from "../../config/firebase";
 
 function Login() {
   const [currentState, setCurrentState] = useState("Sign Up");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signup(username, email, password);
+  };
+
   return (
     <div className="login">
       <img className="logo" src={logoBig} alt="" />
-      <form className="login-form">
+      <form className="login-form" onSubmit={handleSubmit}>
         <h2>{currentState}</h2>
         {currentState === "Sign Up" && (
           <input
@@ -15,6 +25,9 @@ function Login() {
             type="text"
             placeholder="username"
             required=""
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
           />
         )}
 
@@ -23,12 +36,18 @@ function Login() {
           type="email"
           placeholder="Email address"
           required=""
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
         />
         <input
           className="form-input"
           type="password"
           placeholder="password"
           required=""
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
         />
         <button onClick={() => setCurrentState("Sign Up")} type="submit">
           Create account
