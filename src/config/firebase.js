@@ -1,0 +1,16 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyAG2uUCsqhySJVAOARaZ86qhaDXlwHqrHo",
+  authDomain: "chat-app-c6773.firebaseapp.com",
+  projectId: "chat-app-c6773",
+  storageBucket: "chat-app-c6773.firebasestorage.app",
+  messagingSenderId: "604169005997",
+  appId: "1:604169005997:web:62e4e2fdc7561216958f24",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
